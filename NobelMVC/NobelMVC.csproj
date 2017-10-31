@@ -152,65 +152,65 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Categoria.cs">
+    <Compile Include="Models\Categoria.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cidade.cs">
+    <Compile Include="Models\Cidade.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\CidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PremioNobelsController.cs" />
-    <Compile Include="Filiacao.cs">
+    <Compile Include="Models\Filiacao.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Laureado.cs">
+    <Compile Include="Models\Laureado.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LaureadoIndividuo.cs">
+    <Compile Include="Models\LaureadoIndividuo.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LaureadoOrganizacao.cs">
+    <Compile Include="Models\LaureadoOrganizacao.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LaureadosPorPaisAtual_Result.cs">
+    <Compile Include="Models\LaureadosPorPaisAtual_Result.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\PartialClass.cs" />
-    <Compile Include="NobelDataModel.Context.cs">
+    <Compile Include="Models\NobelDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NobelDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="NobelDataModel.cs">
+    <Compile Include="Models\NobelDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="NobelDataModel.Designer.cs">
+    <Compile Include="Models\NobelDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NobelDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Pais.cs">
+    <Compile Include="Models\Pais.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PremioNobel.cs">
+    <Compile Include="Models\PremioNobel.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -221,6 +221,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -237,11 +239,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="NobelDataModel.edmx">
+    <EntityDeploy Include="Models\NobelDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NobelDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="NobelDataModel.edmx.diagram">
+    <Content Include="Models\NobelDataModel.edmx.diagram">
       <DependentUpon>NobelDataModel.edmx</DependentUpon>
     </Content>
     <Content Include="fonts\FontAwesome.otf" />
@@ -250,12 +252,12 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
-    <Content Include="NobelDataModel.Context.tt">
+    <Content Include="Models\NobelDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NobelDataModel.Context.cs</LastGenOutput>
       <DependentUpon>NobelDataModel.edmx</DependentUpon>
     </Content>
-    <Content Include="NobelDataModel.tt">
+    <Content Include="Models\NobelDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NobelDataModel.edmx</DependentUpon>
       <LastGenOutput>NobelDataModel.cs</LastGenOutput>

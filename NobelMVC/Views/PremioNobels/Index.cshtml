@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NobelMVC.PremioNobel>
+﻿@model IEnumerable<NobelMVC.Models.PremioNobel>
 @{
     ViewBag.Title = "Index";
 }
@@ -40,10 +40,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Categoria.Nome)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PremioNobelId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PremioNobelId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PremioNobelId })
+            <td class="text-right">
+                <div class="btn-group">
+                    <a href="@Url.Action("Edit", new { id = item.PremioNobelId })" class="btn btn-default" title="Edit"><i class="fa fa-pencil"></i></a>
+                    <a href="@Url.Action("Details", new { id = item.PremioNobelId })" class="btn btn-default" title="Details"><i class="fa fa-search"></i></a>
+                    <a href="@Url.Action("Delete", new { id = item.PremioNobelId })" class="btn btn-default" title="Delete"><i class="fa fa-trash-o"></i></a>
+                </div>
             </td>
         </tr>
     }

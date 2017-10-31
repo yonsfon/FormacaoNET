@@ -26,7 +26,7 @@ namespace NobelMVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css")
-                      .Include("~/Content/font-awesome", new CssRewriteUrlTransform()));
+                      .Include("~/Content/font-awesome.css", new CssRewriteUrlTransform()));
         }
     }
 }
