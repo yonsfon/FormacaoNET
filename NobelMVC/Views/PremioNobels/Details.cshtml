@@ -1,6 +1,6 @@
 ﻿@model NobelMVC.Models.PremioNobel
 @{
-    ViewBag.Title = "Details";
+            ViewBag.Title = "Details";
 }
 <h2>Details</h2>
 <div>
@@ -49,9 +49,9 @@
 }
 <ul>
     @foreach (var item in Model.Laureado)
-    {
-        if (item.LaureadoTipo == "I")
-        {
+            {
+                if (item.LaureadoTipo == "I")
+                {
             <li>
                 <i class="fa fa-user"></i>
                 <a href="@Url.Action("Details", "LaureadoIndividuos", new {id = item.LaureadoTipo})">

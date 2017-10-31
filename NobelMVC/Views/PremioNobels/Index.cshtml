@@ -1,8 +1,50 @@
-﻿@model IEnumerable<NobelMVC.Models.PremioNobel>
+﻿@model PagedList.IPagedList<NobelMVC.Models.PremioNobel>
+@using PagedList.Mvc
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Nobel Prizes - Index";
 }
-<h2>Index</h2>
+<div class="page-header">
+    <div class="row">
+        <div class="col-lg-7"><h2>@ViewBag.Titke</h2></div>
+        <div class="col.lg-5">
+            @using (Html.BeginForm("Index", "PremioNobels", new { page = 1 }, FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="input-group">
+                        @*<span class="input-group-addon" id="basic-addon1">Filter</span>*@
+                        @Html.TextBox("searchStr", null, new
+                   {
+                       @class = "form-control"
+                   })
+
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            <a class="btn btn-default" href="@Url.Action("Index", "PremioNobels")">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@if (Model.PageCount > 1)
+{
+    <div class="pagination-left-container">
+        @Html.Raw(string.Format("Página: {0:N0} de {1:N0}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))
+        <br />
+        Entradas: @Html.Raw(string.Format("{0:N0}-{1:N0} de {2:N0}", (Model.PageNumber - 1) * Model.PageSize + 1, (Model.TotalItemCount > Model.PageNumber * Model.PageSize ? Model.PageNumber * Model.PageSize : Model.TotalItemCount), Model.TotalItemCount))
+    </div>
+    <div class="pagination-right-container">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, searchStr = ViewBag.searchStr }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+    <div class="clearfix"></div>
+}
+
 <a href="@Url.Action("Create")" class="btn btn-default" title="add new">
     <i class="fa fa-plus"></i>
 </a>
@@ -10,43 +52,53 @@
     <thead>
         <tr>
             <th class="col-lg-1">
-                @Html.DisplayNameFor(model => model.Ano)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Ano)
             </th>
             <th class="col-lg-3">
-                @Html.DisplayNameFor(model => model.Titulo)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Titulo)
             </th>
             <th class="col-lg-5">
-                @Html.DisplayNameFor(model => model.Motivacao)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Motivacao)
             </th>
             <th class="col-lg-1">
-                @Html.DisplayNameFor(model => model.Categoria.Nome)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Categoria.Nome)
             </th>
             <th class="col-lg-2"></th>
         </tr>
-
     </thead>
-    @foreach (var item in Model)
+    @if (Model.Count == 0)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Motivacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categoria.Nome)
-            </td>
-            <td class="text-right">
-                <div class="btn-group">
-                    <a href="@Url.Action("Edit", new { id = item.PremioNobelId })" class="btn btn-default" title="Edit"><i class="fa fa-pencil"></i></a>
-                    <a href="@Url.Action("Details", new { id = item.PremioNobelId })" class="btn btn-default" title="Details"><i class="fa fa-search"></i></a>
-                    <a href="@Url.Action("Delete", new { id = item.PremioNobelId })" class="btn btn-default" title="Delete"><i class="fa fa-trash-o"></i></a>
-                </div>
+            <td colspan="4">
+                Não foram encontrados prémios Nobeis para as pesquisa indicada.
             </td>
         </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motivacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.Nome)
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <a href="@Url.Action("Edit", new { id = item.PremioNobelId })" class="btn btn-default" title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a href="@Url.Action("Details", new { id = item.PremioNobelId })" class="btn btn-default" title="Details"><i class="fa fa-search"></i></a>
+                        <a href="@Url.Action("Delete", new { id = item.PremioNobelId })" class="btn btn-default" title="Delete"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </td>
+            </tr>
+        }
     }
 </table>
