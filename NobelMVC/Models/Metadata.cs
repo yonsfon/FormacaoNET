@@ -18,6 +18,7 @@ namespace NobelMVC.Models
         [Display(Name = "Title")]
         public string Titulo { get; set; }
 
+        [Display(Name = "Motivation")]
         [DataType(DataType.MultilineText)]
         public string Motivacao { get; set; }
 
