@@ -1,11 +1,8 @@
 ﻿@model NobelMVC.Models.PremioNobel
-
 @{
     ViewBag.Title = "Details";
 }
-
 <h2>Details</h2>
-
 <div>
     <h4>PremioNobel</h4>
     <hr />
@@ -13,38 +10,68 @@
         <dt>
             @Html.DisplayNameFor(model => model.Ano)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Ano)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Titulo)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Motivacao)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Motivacao)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Categoria.Nome)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Categoria.Nome)
         </dd>
-
     </dl>
 </div>
+
+@if (Model.Laureado.Count > 0)
+{
+    <hr />
+    if (Model.Laureado.Count == 1)
+    {
+        <h3>Laureado</h3>
+    }
+    else
+    {
+        <h3>Laureados</h3>
+    }
+
+}
+<ul>
+    @foreach (var item in Model.Laureado)
+    {
+        if (item.LaureadoTipo == "I")
+        {
+            <li>
+                <i class="fa fa-user"></i>
+                <a href="@Url.Action("Details", "LaureadoIndividuos", new {id = item.LaureadoTipo})">
+                    @Html.Raw(item.LaureadoIndividuo.Nome)
+                </a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <i class="fa fa-building"></i>
+                <a href="@Url.Action("Details", "LaureadoOrganizacaos", new {id = item.LaureadoId})">
+                    @Html.Raw(item.LaureadoOrganizacao.Nome)
+                </a>
+            </li>
+        }
+    }
+</ul>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PremioNobelId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", new { id = Model.PremioNobelId })" class="btn btn-default" title="Edit"><i class="fa fa-pencil"></i></a>
+    <a href="@Url.Action("Back to List", "Index")" class="btn btn-default" title="Back"><i class="fa fa-list"></i></a>
 </p>

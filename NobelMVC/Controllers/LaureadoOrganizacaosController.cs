@@ -8,118 +8,114 @@ using System.Web;
 using System.Web.Mvc;
 using NobelMVC.Models;
 
-
 namespace NobelMVC.Controllers
 {
-    public class PremioNobelsController : Controller
+    public class LaureadoOrganizacaosController : Controller
     {
         private NobelEntities db = new NobelEntities();
 
-        // GET: PremioNobels
+        // GET: LaureadoOrganizacaos
         public ActionResult Index()
         {
-            var premioNobel = db.PremioNobel.Include(p => p.Categoria).OrderBy(t=>t.Ano);
-            return View(premioNobel.ToList());
+            var laureadoOrganizacao = db.LaureadoOrganizacao.Include(l => l.Laureado);
+            return View(laureadoOrganizacao.ToList());
         }
 
-        // GET: PremioNobels/Details/5
+        // GET: LaureadoOrganizacaos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            int theID = id ?? 1;
-            //PremioNobel premioNobel = db.PremioNobel.Find(id);
-            PremioNobel premioNobel = db.PremioNobel.Where(t => t.PremioNobelId == theID).Include("Laureado").FirstOrDefault();
-            if (premioNobel == null)
+            LaureadoOrganizacao laureadoOrganizacao = db.LaureadoOrganizacao.Find(id);
+            if (laureadoOrganizacao == null)
             {
                 return HttpNotFound();
             }
-            return View(premioNobel);
+            return View(laureadoOrganizacao);
         }
 
-        // GET: PremioNobels/Create
+        // GET: LaureadoOrganizacaos/Create
         public ActionResult Create()
         {
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome");
+            ViewBag.LaureadoId = new SelectList(db.Laureado, "LaureadoId", "LaureadoTipo");
             return View();
         }
 
-        // POST: PremioNobels/Create
+        // POST: LaureadoOrganizacaos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PremioNobelId,Ano,CategoriaId,Titulo,Motivacao")] PremioNobel premioNobel)
+        public ActionResult Create([Bind(Include = "LaureadoId,Nome")] LaureadoOrganizacao laureadoOrganizacao)
         {
             if (ModelState.IsValid)
             {
-                db.PremioNobel.Add(premioNobel);
+                db.LaureadoOrganizacao.Add(laureadoOrganizacao);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome", premioNobel.CategoriaId);
-            return View(premioNobel);
+            ViewBag.LaureadoId = new SelectList(db.Laureado, "LaureadoId", "LaureadoTipo", laureadoOrganizacao.LaureadoId);
+            return View(laureadoOrganizacao);
         }
 
-        // GET: PremioNobels/Edit/5
+        // GET: LaureadoOrganizacaos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PremioNobel premioNobel = db.PremioNobel.Find(id);
-            if (premioNobel == null)
+            LaureadoOrganizacao laureadoOrganizacao = db.LaureadoOrganizacao.Find(id);
+            if (laureadoOrganizacao == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome", premioNobel.CategoriaId);
-            return View(premioNobel);
+            ViewBag.LaureadoId = new SelectList(db.Laureado, "LaureadoId", "LaureadoTipo", laureadoOrganizacao.LaureadoId);
+            return View(laureadoOrganizacao);
         }
 
-        // POST: PremioNobels/Edit/5
+        // POST: LaureadoOrganizacaos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PremioNobelId,Ano,CategoriaId,Titulo,Motivacao")] PremioNobel premioNobel)
+        public ActionResult Edit([Bind(Include = "LaureadoId,Nome")] LaureadoOrganizacao laureadoOrganizacao)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(premioNobel).State = EntityState.Modified;
+                db.Entry(laureadoOrganizacao).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome", premioNobel.CategoriaId);
-            return View(premioNobel);
+            ViewBag.LaureadoId = new SelectList(db.Laureado, "LaureadoId", "LaureadoTipo", laureadoOrganizacao.LaureadoId);
+            return View(laureadoOrganizacao);
         }
 
-        // GET: PremioNobels/Delete/5
+        // GET: LaureadoOrganizacaos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PremioNobel premioNobel = db.PremioNobel.Find(id);
-            if (premioNobel == null)
+            LaureadoOrganizacao laureadoOrganizacao = db.LaureadoOrganizacao.Find(id);
+            if (laureadoOrganizacao == null)
             {
                 return HttpNotFound();
             }
-            return View(premioNobel);
+            return View(laureadoOrganizacao);
         }
 
-        // POST: PremioNobels/Delete/5
+        // POST: LaureadoOrganizacaos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PremioNobel premioNobel = db.PremioNobel.Find(id);
-            db.PremioNobel.Remove(premioNobel);
+            LaureadoOrganizacao laureadoOrganizacao = db.LaureadoOrganizacao.Find(id);
+            db.LaureadoOrganizacao.Remove(laureadoOrganizacao);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

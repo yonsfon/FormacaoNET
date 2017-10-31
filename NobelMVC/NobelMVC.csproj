@@ -152,6 +152,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LaureadoesController.cs" />
+    <Compile Include="Controllers\LaureadoIndividuosController.cs" />
+    <Compile Include="Controllers\LaureadoOrganizacaosController.cs" />
     <Compile Include="Models\Categoria.cs">
       <DependentUpon>NobelDataModel.tt</DependentUpon>
     </Compile>
@@ -307,6 +310,21 @@
     <Content Include="Views\Cidades\Details.cshtml" />
     <Content Include="Views\Cidades\Edit.cshtml" />
     <Content Include="Views\Cidades\Index.cshtml" />
+    <Content Include="Views\Laureadoes\Create.cshtml" />
+    <Content Include="Views\Laureadoes\Delete.cshtml" />
+    <Content Include="Views\Laureadoes\Details.cshtml" />
+    <Content Include="Views\Laureadoes\Edit.cshtml" />
+    <Content Include="Views\Laureadoes\Index.cshtml" />
+    <Content Include="Views\LaureadoOrganizacaos\Create.cshtml" />
+    <Content Include="Views\LaureadoOrganizacaos\Delete.cshtml" />
+    <Content Include="Views\LaureadoOrganizacaos\Details.cshtml" />
+    <Content Include="Views\LaureadoOrganizacaos\Edit.cshtml" />
+    <Content Include="Views\LaureadoOrganizacaos\Index.cshtml" />
+    <Content Include="Views\LaureadoIndividuos\Create.cshtml" />
+    <Content Include="Views\LaureadoIndividuos\Delete.cshtml" />
+    <Content Include="Views\LaureadoIndividuos\Details.cshtml" />
+    <Content Include="Views\LaureadoIndividuos\Edit.cshtml" />
+    <Content Include="Views\LaureadoIndividuos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

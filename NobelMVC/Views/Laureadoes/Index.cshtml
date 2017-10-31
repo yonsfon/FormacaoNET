@@ -1,0 +1,45 @@
+﻿@model IEnumerable<NobelMVC.Models.Laureado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LaureadoTipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LaureadoIndividuo.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LaureadoOrganizacao.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaureadoTipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaureadoIndividuo.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaureadoOrganizacao.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LaureadoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LaureadoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LaureadoId })
+        </td>
+    </tr>
+}
+
+</table>

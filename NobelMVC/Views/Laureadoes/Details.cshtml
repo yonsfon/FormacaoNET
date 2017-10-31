@@ -1,0 +1,42 @@
+﻿@model NobelMVC.Models.Laureado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Laureado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LaureadoTipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaureadoTipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LaureadoIndividuo.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaureadoIndividuo.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LaureadoOrganizacao.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaureadoOrganizacao.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LaureadoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
