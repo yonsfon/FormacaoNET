@@ -1,0 +1,50 @@
+﻿@model IEnumerable<NobelMVC.PremioNobel>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<a href="@Url.Action("Create")" class="btn btn-default" title="add new">
+    <i class="fa fa-plus"></i>
+</a>
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th class="col-lg-1">
+                @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th class="col-lg-3">
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th class="col-lg-5">
+                @Html.DisplayNameFor(model => model.Motivacao)
+            </th>
+            <th class="col-lg-1">
+                @Html.DisplayNameFor(model => model.Categoria.Nome)
+            </th>
+            <th class="col-lg-2"></th>
+        </tr>
+
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ano)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motivacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PremioNobelId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PremioNobelId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PremioNobelId })
+            </td>
+        </tr>
+    }
+</table>
