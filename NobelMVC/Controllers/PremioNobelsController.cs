@@ -16,6 +16,26 @@ namespace NobelMVC.Controllers
     {
         private NobelEntities db = new NobelEntities();
 
+        public ActionResult IndexCategoria(int? page, string searchStr, int categoriaID)
+        {
+            int aPage = (page ?? 1);
+            int pageSize = Int16.Parse(System.Configuration.ConfigurationManager.AppSettings["ItemsPorPagina"]);
+
+            ViewBag.searchStr = searchStr;
+
+            var dataResult = db.PremioNobel.Include(p => p.Categoria);
+
+
+            if (!String.IsNullOrEmpty(searchStr))
+                dataResult = dataResult.Where(t => t.Titulo.Contains(searchStr));
+
+
+            dataResult = dataResult.Where(t => t.CategoriaId == categoriaID);
+
+            var viewDataResult = dataResult.OrderBy(p => p.Ano).ToPagedList(aPage, pageSize);
+            return View(viewDataResult);
+        }
+
         // GET: PremioNobels
         public ActionResult Index(int? page, string searchStr)
         {
