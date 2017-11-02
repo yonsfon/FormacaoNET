@@ -7,7 +7,7 @@
       <Diagram DiagramId="31b248a01f4a4253a5f104b7b9d1bc05" Name="Diagram1">
         <EntityTypeShape EntityType="NobelModel.Categoria" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NobelModel.Cidade" Width="2" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NobelModel.Filiacao" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NobelModel.Filiacao" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="NobelModel.Laureado" Width="3.5" PointX="2.375" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NobelModel.LaureadoIndividuo" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="NobelModel.LaureadoOrganizacao" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />

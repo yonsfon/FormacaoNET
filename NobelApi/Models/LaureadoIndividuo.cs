@@ -28,7 +28,7 @@ namespace NobelApi.Models
         public Nullable<int> CidadeMorteId { get; set; }
         public string Sexo { get; set; }
     
-        public virtual Cidade CidadeNAscimento { get; set; }
+        public virtual Cidade CidadeNascimento { get; set; }
         public virtual Cidade CidadeMorte { get; set; }
         public virtual Laureado Laureado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

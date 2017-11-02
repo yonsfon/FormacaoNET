@@ -385,7 +385,7 @@
           <Property Name="CidadeNascimentoId" Type="Int32" Nullable="false" />
           <Property Name="CidadeMorteId" Type="Int32" />
           <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CidadeNAscimento" Relationship="Self.FK_Individuo_Cidade" FromRole="LaureadoIndividuo" ToRole="Cidade" />
+          <NavigationProperty Name="CidadeNascimento" Relationship="Self.FK_Individuo_Cidade" FromRole="LaureadoIndividuo" ToRole="Cidade" />
           <NavigationProperty Name="CidadeMorte" Relationship="Self.FK_Individuo_Cidade1" FromRole="LaureadoIndividuo" ToRole="Cidade" />
           <NavigationProperty Name="Laureado" Relationship="Self.FK_Individuo_Laureado" FromRole="LaureadoIndividuo" ToRole="Laureado" />
           <NavigationProperty Name="Filiacao" Relationship="Self.LaureadoIndividuoFiliacao" FromRole="LaureadoIndividuo" ToRole="Filiacao" />
