@@ -1,4 +1,4 @@
-﻿namespace NobelApi.Controllers
+﻿namespace NobelApi.Models
 {
     public class FiliacaoDTO
     {

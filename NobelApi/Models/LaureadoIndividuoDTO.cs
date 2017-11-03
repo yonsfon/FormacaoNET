@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace NobelApi.Controllers
+namespace NobelApi.Models
 {
     public class LaureadoIndividuoDTO
     {

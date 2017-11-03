@@ -24,14 +24,44 @@ namespace NobelApi.Controllers
         /// <returns></returns>
         public IQueryable<LaureadoIndividuoDTO> GetLaureadoIndividuo()
         {
-            return db.LaureadoIndividuo.Select(p => new LaureadoIndividuoDTO
-            {
-                DataMorte = p.DataMorte,
-                DataNascimento = p.DataNascimento,
-                LaureadoId = p.LaureadoId,
-                Nome = p.Nome,
-                Sexo = p.Sexo
-            });
+            return GetLaureadoIndividuo(null);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="srchName"></param>
+        /// <returns></returns>
+        public IQueryable<LaureadoIndividuoDTO> GetLaureadoIndividuo(string srchName)
+        {
+
+            if (string.IsNullOrWhiteSpace(srchName) == false)
+                return db.LaureadoIndividuo.Where(t => t.Nome.Contains(srchName)).Select(p => new LaureadoIndividuoDTO
+                {
+                    DataMorte = p.DataMorte,
+                    DataNascimento = p.DataNascimento,
+                    LaureadoId = p.LaureadoId,
+                    Nome = p.Nome,
+                    Sexo = p.Sexo
+                });
+            else
+                return db.LaureadoIndividuo.Select(p => new LaureadoIndividuoDTO
+                {
+                    DataMorte = p.DataMorte,
+                    DataNascimento = p.DataNascimento,
+                    LaureadoId = p.LaureadoId,
+                    Nome = p.Nome,
+                    Sexo = p.Sexo
+                });
+
+            ////++ Apanhar 100 random elements
+            //return db.LaureadoIndividuo.OrderBy(t => Guid.NewGuid()).Take(100).Select(p => new LaureadoIndividuoDTO
+            //{
+            //    DataMorte = p.DataMorte,
+            //    DataNascimento = p.DataNascimento,
+            //    LaureadoId = p.LaureadoId,
+            //    Nome = p.Nome,
+            //    Sexo = p.Sexo
+            //}).OrderBy(t => t.Nome);
         }
 
         // GET: api/LaureadoIndividuos/5
@@ -84,7 +114,7 @@ namespace NobelApi.Controllers
                         Cidade = new CidadeDTO()
                         {
                             CidadeId = t.CidadeId,
-                            Nome  = t.Cidade.Nome,
+                            Nome = t.Cidade.Nome,
                             Pais = new PaisDTO()
                             {
                                 PaisID = t.Cidade.PaisId,
